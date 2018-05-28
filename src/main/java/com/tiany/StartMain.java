@@ -1,5 +1,6 @@
 package com.tiany;
 
+import com.tiany.persister.impl.MockNewsPersister;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,10 +10,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class StartMain {
 
     public static void main(String[] args) {
-        //BeanFactory bf = new XmlBeanFactory(new ClassPathResource("application.xml"));
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        context.getBean("");
+        MockNewsPersister mockNewsPersister = (MockNewsPersister) context.getBean("mockNewsPersister");
+
+        mockNewsPersister.persisterNewsBean();
+        mockNewsPersister.persisterNewsBean();
+
     }
 }

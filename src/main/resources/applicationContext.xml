@@ -5,7 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true" default-autowire="no">
+
+    <context:component-scan base-package="com.tiany"/>
 
     <!--<context:component-scan base-package="com.trade.spring" />-->
 
@@ -18,14 +21,34 @@
     <!--<bean id="webAppVersion" class="java.lang.String">
         <constructor-arg value="1.0.0"></constructor-arg>
     </bean>
-    <bean id="djNewsProvider" class = "com.trade.spring.ForexNewsProvider">
-        &lt;!&ndash;<constructor-arg index="0">
+    -->
+    <!--<bean id="djNewsProvider" class = "com.tiany.factory.FXNewsProvider">
+        <constructor-arg index="0">
             <ref bean="djNewsListener"/>
         </constructor-arg>
         <constructor-arg index="1">
             <ref bean="djNewsRegister"/>
-        </constructor-arg>&ndash;&gt;
+        </constructor-arg>
     </bean>
-    <bean id="djNewsListener" class="com.trade.spring.service.impl.DowJonsNewsListener"/>
-    <bean id="djNewsRegister" class="com.trade.spring.service.impl.DowJonsNewsRegister"/>-->
+    <bean id="djNewsListener" class="com.tiany.listener.impl.DowJonesNewsListener"/>
+    <bean id="djNewsRegister" class="com.tiany.persister.impl.DowJonesNewsPersister"/>-->
+
+    <bean id="nextDayDisplay" class = "com.tiany.factory.NextDayDisplay">
+        <property name="nextDay">
+            <ref bean = "nextDayFactory" />
+        </property>
+    </bean>
+    <bean id="nextDayFactory" class ="com.tiany.factory.NextDayFactoryBean"/>
+
+    <bean id="mockNewsPersister" class="com.tiany.persister.impl.MockNewsPersister">
+       <!-- <property name="fxNewsBean">
+            <ref bean="fxNewsBean"/>
+        </property>-->
+       <!-- <lookup-method name="getNewsBean" bean="fxNewsBean"/>-->
+     </bean>
+    <bean id="fxNewsBean" class="com.tiany.basic.FXNewsBean" scope="prototype"/>
+
+    <bean id="methodExecListener" class="com.tiany.listener.MethodExecutionEventListener"/>
+
+    <bean id="evtPublisher" class="com.tiany.MethodExecutionEventPublisher"/>
 </beans>
