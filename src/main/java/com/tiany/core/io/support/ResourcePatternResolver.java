@@ -4,7 +4,8 @@ package com.tiany.core.io.support;
  * Created by tiany on 2018/5/29.
  */
 
-import org.springframework.core.io.ResourceLoader;
+
+import com.tiany.core.io.loader.ResourceLoader;
 
 /**
  * 资源解析器
