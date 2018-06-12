@@ -13,8 +13,8 @@ public class UsersMain {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         UsersService usersService = (UsersService) applicationContext.getBean("usersServiceImpl");
         Users users = new Users();
-        users.setName("liLei");
-        users.setId(1);
+        users.setName("wanglei");
+        users.setId(2);
         System.out.println(usersService.insertUsers(users));
     }
 }
