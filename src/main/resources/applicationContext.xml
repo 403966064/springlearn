@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
        default-lazy-init="true" default-autowire="no">
     <context:annotation-config/>
-    <context:component-scan base-package="com.tiany.service, com.tiany.dao"/>
+    <context:component-scan base-package="com.tiany.service, com.tiany.dao, com.tiany.entity"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -67,8 +67,12 @@
         <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
     </aop:config>
 
+
     <!--事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <!-- 开启切面的注解-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
