@@ -27,7 +27,7 @@ public class MoneyServiceImpl implements MoneyService {
         Money targetMoney = new Money();
         targetMoney.setUserId(targetUserId);
         targetMoney.setMoney(money);
-        moneyDao.decreaseMoney(sourceMoney);
+        moneyDao.decreaseMoney(targetMoney);
         return 0;
     }
 

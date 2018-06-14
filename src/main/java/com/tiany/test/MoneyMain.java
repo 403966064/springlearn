@@ -9,8 +9,12 @@ public class MoneyMain {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+
+        System.out.println();
         MoneyService moneyService = (MoneyService) applicationContext.getBean("moneyServiceImpl");
-        DynamicDataSourceHolder.setDataSource("dataSource-2");
+
+        DynamicDataSourceHolder.setDataSource("1");
         moneyService.paySomeoneMoney(1, 2,10d);
 //        moneyService.getMoney(10d);
         /**动态代理的适用范围， 对象是实现了某个接口的实现类*/
