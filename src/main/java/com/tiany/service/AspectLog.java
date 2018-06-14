@@ -26,8 +26,7 @@ public class AspectLog {
     }
 
     @Before("within(com.tiany.service.impl.MoneyServiceImpl) && @annotation(com.tiany.entity.Logger)")
-    public void beforeDo(JoinPoint joinPoint, String addLogger){
-        System.out.println(addLogger);
+    public void beforeDo(JoinPoint joinPoint){
         System.out.println("获取到的参数是："+ Arrays.toString(joinPoint.getArgs()));
         System.out.println("beforeDo");
     }
