@@ -3,7 +3,6 @@ package com.tiany.service.impl;
 import com.tiany.dao.MoneyDao;
 import com.tiany.entity.Logger;
 import com.tiany.entity.Money;
-import com.tiany.route.DynamicDataSourceHolder;
 import com.tiany.service.MoneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class MoneyServiceImpl implements MoneyService {
         Money sourceMoney = new Money();
         sourceMoney.setUserId(sourceUserId);
         sourceMoney.setMoney(money);
-        DynamicDataSourceHolder.setDataSource("moneyDataSource");
+
         moneyDao.decreaseMoney(sourceMoney);
 
        /* *//**异常点*//*
