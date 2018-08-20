@@ -20,4 +20,8 @@ public class GreetingController {
     public @ResponseBody String greeting(@RequestParam(value = "name", defaultValue = "world!") String name){
         return JSON.toJSONString(new Greeting(counter.incrementAndGet(), String.format(template, name)));
     }
+
+    public static void main(String[] args) {
+
+    }
 }
